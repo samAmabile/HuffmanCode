@@ -22,12 +22,19 @@ g++ -O3 huffman.cpp main.cpp
 * program currently just outputs stats:
 
 ```
+Enter filename to compress: 
+song_et_al.txt
+
 =========================RESULTS OF COMPRESSION=================================
 Recovered file succesfully
-Original string size: 229526.00
-Compressed string size: 146526.00
+Original string bits: 1836208.00
+>>original character count: 229526
+Compressed string bits: 1172208.00
+>>compressed character count: 146526
 Ratio: 0.64
+>>savings of 36.16%
 ================================================================================
+
 ```
 
 You can uncomment out the print statements for the test file if you want to see the encoding, if thats something you are into

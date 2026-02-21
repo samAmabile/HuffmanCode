@@ -25,7 +25,7 @@ int main(){
     cout<<"Enter filename to compress: "<<endl;
     cin>>filename; 
     string teststr = readFile(filename); 
-    cout<<"Original File: "<<endl;
+    
     
 
     
