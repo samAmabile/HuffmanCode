@@ -20,19 +20,23 @@ string readFile(const string& filename){
 int main(){
 
     //using ["Large Language Model Reasoning Failures" by Peiyang Song, Pengrui Han, Noah Goodman, 2026] for test
-    
-    string teststr = readFile("song_et_al.txt"); 
+    //filename: "song_et_al.txt" 
+    string filename;
+    cout<<"Enter filename to compress: "<<endl;
+    cin>>filename; 
+    string teststr = readFile(filename); 
     cout<<"Original File: "<<endl;
-    //cout<<teststr<<endl;
+    
 
     
     Huffman codex(teststr); 
 
     vector<unsigned char> bitcode = codex.encode(teststr); 
-    //cout<<"Encoded message: "<<endl;
-    //for (unsigned char c: bitcode) cout<<c;
-
+    
+    
+    int originalLength = teststr.size();
     double originalSize = (sizeof(char) * teststr.size());
+    int compressedLength = bitcode.size();
     double compressedSize = (sizeof(unsigned char) * bitcode.size()); 
     double compressionRatio = compressedSize/originalSize; 
 
@@ -47,9 +51,12 @@ int main(){
     }else{
         cout<<"Failed to properly decode compressed string"<<endl;
     }
-    cout<<"Original string size: "<<fixed<<setprecision(2)<<originalSize<<endl;
-    cout<<"Compressed string size: "<<compressedSize<<endl;
+    cout<<"Original string bits: "<<fixed<<setprecision(2)<<originalSize*8<<endl;
+    cout<<">>original character count: "<<originalLength<<endl;
+    cout<<"Compressed string bits: "<<compressedSize*8<<endl;
+    cout<<">>compressed character count: "<<compressedLength<<endl;
     cout<<"Ratio: "<<compressionRatio<<endl;
+    cout<<">>savings of "<<(1-compressionRatio)*100<<"%"<<endl;
     cout<<"================================================================================"<<endl;
     cout<<endl; 
     cout<<endl; 
