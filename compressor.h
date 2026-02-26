@@ -9,10 +9,12 @@
 
 class Compressor{
 private:
-    Huffman _codex; 
+    Huffman _codex;
+    bool _codeSet = false; 
 
 public:
     Compressor();
+    Compressor(const std::string&);
     std::vector<unsigned char> compress(const std::string&);
     std::string extract(std::vector<unsigned char>&);
     bool save(std::vector<unsigned char>&, const std::string&);

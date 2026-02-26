@@ -31,7 +31,7 @@ int main(int argc, char* argv[]){
         instr = argv[1]; 
         outstr = argv[2];
     }else {
-        cerr<<"Too many filenames, run program with [executable, file to compress, filename to save compressed file]"<<endl;
+        cerr<<"Too many filenames, run program with [executable] [file to compress] [filename to save compressed file]"<<endl;
         return 0; 
     }
 
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
 
 
     if (compressor.extractTo(outstr, recovered)) {
-        cout<<"File recovered to song_recovered.txt"<<endl;
+        cout<<"File recovered to: "<<recovered<<endl;
     }else {
         cout<<"file extraction failed"<<endl;
         return 1; 

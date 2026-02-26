@@ -10,6 +10,26 @@ Huffman::Huffman(){};
 Huffman::Huffman(const std::string& text){
     setCode(text);
 }
+Huffman::Huffman(const Huffman& h){
+    std::memcpy(_freq, h._freq, sizeof(_freq));
+    for (int i=0; i<256; ++i){
+        _codes[i] = h._codes[i];
+    }
+    _root = _copy(h._root);
+}
+Huffman& Huffman::operator=(const Huffman& h){
+    if (this == &h) return *this;
+
+    _clear(_root);
+    for (int i=0; i<256; ++i){
+        _freq[i] = h._freq[i];
+        _codes[i] = h._codes[i];
+    }
+
+    _root = _copy(h._root);
+
+    return *this;
+}
 Huffman::~Huffman(){
     _clear(_root);
 }
@@ -57,6 +77,13 @@ void Huffman::_makeCodes(Node* cur, std::string code){
     }
     _makeCodes(cur->left, code+"0");
     _makeCodes(cur->right, code+"1");
+}
+Node* Huffman::_copy(Node* root){
+    if (!root) return nullptr;
+    Node* newRoot = new Node(root->letter, root->freq);
+    newRoot->left = _copy(root->left);
+    newRoot->right = _copy(root->right);
+    return newRoot;
 }
 void Huffman::_clear(Node* node){
     if (!node) return;

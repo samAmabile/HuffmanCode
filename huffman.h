@@ -30,12 +30,15 @@ private:
     void _fdist(std::string);
     Node* _buildTree();
     void _makeCodes(Node*, std::string);
+    Node* _copy(Node*);
     void _clear(Node*);
 
 public:
     
     Huffman();
     Huffman(const std::string&);
+    Huffman(const Huffman&);
+    Huffman& operator=(const Huffman&);
     ~Huffman();
     std::vector<unsigned char> encode(const std::string&);
     std::string decode(const std::vector<unsigned char>&);

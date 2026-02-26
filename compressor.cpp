@@ -37,8 +37,17 @@ void writeFile(const std::string& content, const std::string& filename){
 //=============================class member functions:===========================//
 Compressor::Compressor(){}
 
+Compressor::Compressor(const std::string& filename){
+    std::string content = readFile(filename); 
+    _codex.setCode(content);
+    _codeSet = true;
+}
+
 std::vector<unsigned char> Compressor::compress(const std::string& text){
-    _codex.setCode(text);
+    if (!_codeSet){
+        _codex.setCode(text);
+        _codeSet = true;
+    }
     return _codex.encode(text);
 }
 
