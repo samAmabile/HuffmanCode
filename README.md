@@ -39,7 +39,7 @@ song_et_al_recovered.txt -- example of recovered file
 * thats it i think, a compiler
 
 ### To Run:
-#### main.cpp (test Huffman Code on a file)
+* #### main.cpp (test Huffman Code on a file)
 ```bash
 g++ -O3 huffman.cpp main.cpp
 ./huffmanstats.o
@@ -63,7 +63,7 @@ Ratio: 0.64
 ================================================================================
 
 ```
-#### compmain.cpp (compress, save, and extract files using Compressor class)
+* #### compmain.cpp (compress, save, and extract files using Compressor class)
 Program takes filenames as arguments in the order *executable  filename  save_as*
 ```bash
 g++ -O3 huffman.cpp compressor.cpp compmain.cpp 
