@@ -41,8 +41,8 @@ song_et_al_recovered.txt -- example of recovered file
 ### To Run:
 * #### main.cpp (test Huffman Code on a file)
 ```bash
-g++ -O3 huffman.cpp main.cpp
-./huffmanstats.o
+g++ -O3 huffman.cpp main.cpp -o huffman
+./huffman
 ```
 * main.cpp outputs stats about compression to console
 
@@ -66,8 +66,8 @@ Ratio: 0.64
 * #### compmain.cpp (compress, save, and extract files using Compressor class)
 Program takes filenames as arguments in the order *executable  filename  save_as*
 ```bash
-g++ -O3 huffman.cpp compressor.cpp compmain.cpp 
-./compressor.o file_to_compress.txt save_file_as.txt
+g++ -O3 huffman.cpp compressor.cpp compmain.cpp -o compressor
+./compressor file_to_compress.txt save_file_as.txt
 ```
 * compmain.cpp compresses the file and saves it to the current directory, then automatically extracts it and saves it to *filename_recovered.txt*
 
