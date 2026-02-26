@@ -8,6 +8,8 @@
 
 using namespace std; 
 
+
+//to read files in the fancy way. Prevents crashing on null characters, we hope. 
 string readFile(const string& filename){
     ifstream infile(filename, std::ios::binary);
     if (!infile) return ""; 
@@ -19,8 +21,6 @@ string readFile(const string& filename){
 
 int main(){
 
-    //using ["Large Language Model Reasoning Failures" by Peiyang Song, Pengrui Han, Noah Goodman, 2026] for test
-    //filename: "song_et_al.txt" 
     string filename;
     cout<<"Enter filename to compress: "<<endl;
     cin>>filename; 
@@ -60,8 +60,6 @@ int main(){
     cout<<"================================================================================"<<endl;
     cout<<endl; 
     cout<<endl; 
-    //cout<<"Recovered message: "<<endl;
-    //cout<<decoded<<endl;
 
 
 

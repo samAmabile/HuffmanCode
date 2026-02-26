@@ -3,14 +3,20 @@
 #include <vector>
 #include <string>
 #include <cstring>
+#include <iostream>
 
+
+Huffman::Huffman(){};
 Huffman::Huffman(const std::string& text){
-    _fdist(text); 
-    _root = _buildTree(); 
-    _makeCodes(_root, "");
+    setCode(text);
 }
 Huffman::~Huffman(){
     _clear(_root);
+}
+void Huffman::setCode(const std::string& text){
+    _fdist(text);
+    _root = _buildTree();
+    _makeCodes(_root, "");
 }
 void Huffman::_fdist(std::string msg){
     for (char c: msg){
@@ -114,17 +120,12 @@ std::string Huffman::decode(const std::vector<unsigned char>& huffcode){
         _freq[i] = 0; 
     }
 
-    //int freq[256]{}; 
     for (int i=0; i<256; i++){
         std::memcpy(&_freq[i], &huffcode[offset], sizeof(int));
-        //freq[i] = *reinterpret_cast<const int*>(&huffcode[offset]);
         offset += sizeof(int); 
     }
 
     _clear(_root);
-    //for (int i=0; i<256; i++){
-    //    _freq[i] = freq[i];
-    //}
 
     _root = _buildTree();
     if (!_root) return "";
@@ -136,7 +137,7 @@ std::string Huffman::decode(const std::vector<unsigned char>& huffcode){
     for (auto i{offset}; i<huffcode.size(); ++i){
         unsigned char byte = huffcode[i];
 
-        //bitwalk
+        //bitwalk:
         for (int bit=7; bit>=0; --bit){
             bool isOne = (byte >> bit) & 1;
 
@@ -145,6 +146,7 @@ std::string Huffman::decode(const std::vector<unsigned char>& huffcode){
             }else{
                 cur = cur->left;
             }
+            if (!cur) std::cerr<<"**Huffman reached Null Node, segfault prevented, decode terminated**"<<std::endl;
 
             if (cur && !cur->left && !cur->right){
                 result += cur->letter; 

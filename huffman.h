@@ -33,11 +33,13 @@ private:
     void _clear(Node*);
 
 public:
-
+    
+    Huffman();
     Huffman(const std::string&);
     ~Huffman();
     std::vector<unsigned char> encode(const std::string&);
     std::string decode(const std::vector<unsigned char>&);
+    void setCode(const std::string&);
 
 };
 
