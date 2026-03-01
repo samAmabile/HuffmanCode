@@ -6,7 +6,11 @@
 #include <iostream>
 
 
-Huffman::Huffman(){};
+Huffman::Huffman(): _root(nullptr){
+    for (int i=0; i<256; ++i){
+        _freq[i] = 0;
+    }
+}
 Huffman::Huffman(const std::string& text){
     setCode(text);
 }
