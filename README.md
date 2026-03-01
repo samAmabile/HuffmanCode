@@ -5,7 +5,7 @@ Compress, Save, and Extract files quicky and easily from the terminal.
 
 Saves files with `.pzip` extension for easy identification
 
-***clone repo and run `make` to compile, then `./protozip <filename>` to compress a file. run with `--extract` flag to recover .pzip files 
+***clone repo and run `make` to compile, then `./protozip <filename>` to compress a file. run with `--extract` flag to recover .pzip files*** 
 
 ## Rundown
 ProtoZip uses Huffman Code, which is a prefix-free encoding scheme that is used by many string compression programs including ZST.
@@ -19,11 +19,11 @@ Though there is probably a much simpler solution for that, and many versions of 
 ### Huffman Class
 A data structure implementation of the Huffman Code tree. Uses priority queue and integer array to sort characters by frequency and build the encoding tree. 
 The encoding scheme is saved as a header on the bit string so the decode function knows how to decode, because each file will have a unique binary tree.
-***use main.cpp to test this on a file and see savings from compression
+***use main.cpp to test this on a file and see savings from compression***
 
 ### Compressor Class
 A simple implementation of file compression using the Huffman Code data structure/algorithm. Allows file loading, encoding, saving, and decoding from command line. 
-***use compmain.cpp to compress files, save the compressed version, and decompress/extract files encoded with Huffman Code 
+***use compmain.cpp to compress files, save the compressed version, and decompress/extract files encoded with Huffman Code***
 
 #### Files
 * ProtoZip file compression tool:
@@ -64,7 +64,7 @@ to compress a file and save as:
 make
 ./protozip <filename> <save as>
 ```
-**Output: 
+**Output:** 
 ```console
 File compressed to: song_bitstr.txt
 ===========================================================
@@ -84,7 +84,7 @@ to extract and save as:
 make
 ./protozip --extract <filename> <save as>
 ```
-**Output:
+**Output:**
 ```console
 File recovered to song_recovered.txt
 ===========================================================
